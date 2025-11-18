@@ -10,7 +10,7 @@ A través de su página www.gbif.org se hizo una solicitud de información con l
 }
 ```
 Ya que realizar un análisis de la totalidad de las formas de vida en el territorio nacional requeriría de mayores capacidades de cómputo y un mayor tiempo de espera a que la GBIF pueda proporcionarla(ya que la petición puede tomar desde unos cuantos minutos hasta horas) se tomó una porción de la totalidad de la biodiversidad. A continuación se muestra la porción del arbol taxonómico que se tomó y el número de observaciones de cada sección, más específicamente se escogió la familia *Leporidae* que contiene múltiples géneros, siendo los más observados *Sylvilagus*, *Lepus* y *Romerolagus*. El dataset como lo proporciona GBIF contiene 23,700 registros
-```json
+```python
 Reino
 └─ Animalia............................................. 890,355
    Filo
@@ -174,7 +174,7 @@ num_columnas = observaciones.shape[1]
 print(f"El número de columnas es: {num_columnas}")
 ```
 
-```json
+```python
 ['gbifID', 'datasetKey', 'occurrenceID', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'infraspecificEpithet', 'taxonRank', 'scientificName', 'verbatimScientificName', 'verbatimScientificNameAuthorship', 'countryCode', 'locality', 'stateProvince', 'occurrenceStatus', 'individualCount', 'publishingOrgKey', 'decimalLatitude', 'decimalLongitude', 'coordinateUncertaintyInMeters', 'coordinatePrecision', 'elevation', 'elevationAccuracy', 'depth', 'depthAccuracy', 'eventDate', 'day', 'month', 'year', 'taxonKey', 'speciesKey', 'basisOfRecord', 'institutionCode', 'collectionCode', 'catalogNumber', 'recordNumber', 'identifiedBy', 'dateIdentified', 'license', 'rightsHolder', 'recordedBy', 'typeStatus', 'establishmentMeans', 'lastInterpreted', 'mediaType', 'issue']
 El número de columnas es: 50
 ```
@@ -183,7 +183,7 @@ Eliminar columnas con porcentaje de nulos mayor o igual al 40%
 observaciones= observaciones.loc[:, observaciones.isnull().mean() < (40 / 100)]
 ```
 
-```json
+```python
 ['gbifID', 'datasetKey', 'occurrenceID', 'kingdom', 'phylum', 'class', 'order', 'family', 'genus', 'species', 'taxonRank', 'scientificName', 'verbatimScientificName', 'countryCode', 'locality', 'stateProvince', 'occurrenceStatus', 'publishingOrgKey', 'decimalLatitude', 'decimalLongitude', 'eventDate', 'day', 'month', 'year', 'taxonKey', 'speciesKey', 'basisOfRecord', 'institutionCode', 'collectionCode', 'catalogNumber', 'identifiedBy', 'license', 'rightsHolder', 'recordedBy', 'lastInterpreted', 'issue']
 El número de columnas es: 36
 ```
@@ -199,7 +199,7 @@ observaciones = observaciones.drop([
 ], axis=1)
 ```
 
-```json
+```python
 ['verbatimScientificName', 'locality', 'stateProvince', 'decimalLatitude', 'decimalLongitude', 'eventDate', 'basisOfRecord', 'institutionCode']
 El número de columnas es: 8
 ```
